@@ -3,15 +3,15 @@ import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet } from "rea
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { filterData } from "../../data/filterData";
 
-export default function TariDetailScreen() {
+export default function RumahDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
-  const tari = filterData.find((t) => t.id === id && t.category === "Tari");
+  const rumah = filterData.find((r) => r.id === id && r.category === "Rumah Adat");
 
-  if (!tari) {
+  if (!rumah) {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Tari Tidak Ditemukan</Text>
+        <Text style={styles.title}>Rumah Tidak Ditemukan</Text>
         <Text style={styles.description}>ID yang dicari: {id}</Text>
       </View>
     );
@@ -21,10 +21,10 @@ export default function TariDetailScreen() {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.contentContainer}>
-          <Image source={tari.image} style={styles.image} />
-          <Text style={styles.title}>{tari.name}</Text>
-          <Text style={styles.origin}>Asal: {tari.origin}</Text>
-          <Text style={styles.description}>{tari.description}</Text>
+          <Image source={rumah.image} style={styles.image} />
+          <Text style={styles.title}>{rumah.name}</Text>
+          <Text style={styles.origin}>Asal: {rumah.origin}</Text>
+          <Text style={styles.description}>{rumah.description}</Text>
         </View>
       </ScrollView>
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
@@ -38,6 +38,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#212121",
+  },
+  scrollContainer: {
+    flexGrow: 1,
   },
   scrollContent: {
     padding: 20,
@@ -74,7 +77,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 15,
     alignItems: "center",
-    marginBottom:100,
+    marginBottom: 100,
     width: 300,
     alignSelf: "center",
   },

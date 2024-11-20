@@ -2,31 +2,34 @@ import React from "react";
 import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import { filterData, FilterItem } from "../../data/filterData";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function TariListScreen() {
+export default function BajuListScreen() {
   const router = useRouter();
-  const tariData = filterData.filter((item) => item.category === "Tari");
+  const bajuData = filterData.filter((item) => item.category === "Baju Adat");
 
-  const renderTariItem = ({ item }: { item: FilterItem }) => (
-    <TouchableOpacity onPress={() => router.push(`/tari/${item.id}`)}>
-      <View style={styles.itemContainer}>
-        <Image source={item.image} style={styles.image} />
-        <View style={styles.textContainer}>
-          <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.origin}>Asal: {item.origin}</Text>
-        </View>
+  const renderBajuItem = ({ item }: { item: FilterItem }) => (
+    <TouchableOpacity
+      style={styles.itemContainer}
+      onPress={() => {
+        router.push(`/baju/${item.id}`);
+      }}>
+      <Image source={item.image} style={styles.image} resizeMode="cover" />
+      <View style={styles.textContainer}>
+        <Text style={styles.name}>{item.name}</Text>
+        <Text style={styles.origin}>Asal: {item.origin}</Text>
       </View>
     </TouchableOpacity>
   );
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tari Nusantara</Text>
-      <FlatList data={tariData} renderItem={renderTariItem} keyExtractor={(item) => item.id} contentContainerStyle={styles.listContainer} />
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Pakaian Tradisional</Text>
+      <FlatList data={bajuData} renderItem={renderBajuItem} keyExtractor={(item) => item.id} contentContainerStyle={styles.listContainer} />
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
         <Text style={styles.backButtonText}>Kembali</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -34,15 +37,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#212121",
-    paddingTop: 50,
-    paddingBottom: 70,
   },
   title: {
     color: "white",
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
-    marginBottom: 20,
+    marginVertical: 20,
   },
   listContainer: {
     paddingHorizontal: 20,
@@ -55,18 +56,20 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 120,
+    height: 120,
   },
   textContainer: {
     justifyContent: "center",
     marginLeft: 15,
     flex: 1,
+    padding: 10,
   },
   name: {
     color: "white",
     fontSize: 18,
     fontWeight: "bold",
+    marginBottom: 4,
   },
   origin: {
     color: "white",
@@ -77,9 +80,10 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 15,
     alignItems: "center",
-    marginBottom: 10,
+    marginVertical: 20,
     width: 100,
     alignSelf: "center",
+    marginBottom: 70
   },
   backButtonText: {
     color: "white",

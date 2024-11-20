@@ -14,7 +14,7 @@ export default function CustomNavbar() {
       <TouchableOpacity onPress={() => router.push("/filter")}>
         <Filter color="white" size={24} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={() => router.push("/about")}>
         <Info color="white" size={24} />
       </TouchableOpacity>
     </View>

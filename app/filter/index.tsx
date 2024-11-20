@@ -5,7 +5,7 @@ import { filterData, FilterItem } from "../../data/filterData";
 import { useRouter } from "expo-router";
 
 export default function FilterScreen() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("Semua");
+  const [selectedCategory, setSelectedCategory] = useState("Semua");
   const router = useRouter();
 
   const categories = ["Semua", "Tari", "Makanan", "Baju Adat", "Rumah Adat", "Bahasa Daerah"];
@@ -22,19 +22,24 @@ export default function FilterScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Filter Budaya Nusantara</Text>
-
       <View style={styles.pickerContainer}>
         <Picker selectedValue={selectedCategory} onValueChange={(itemValue) => setSelectedCategory(itemValue)} style={styles.picker}>
           {categories.map((category) => (
-            <Picker.Item key={category} label={category} value={category} color="black" />
+            <Picker.Item key={category} label={category} value={category} />
           ))}
         </Picker>
       </View>
-
-      <FlatList data={filteredData} renderItem={renderItem} keyExtractor={(item) => item.id} contentContainerStyle={styles.listContainer} />
+      <FlatList
+        data={filteredData}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+        contentContainerStyle={styles.listContainer}
+        ListFooterComponent={<View style={{ height: 50 }} />}
+      />
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -59,6 +64,7 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     paddingHorizontal: 20,
+    paddingBottom: 20,
   },
   itemContainer: {
     backgroundColor: "rgba(255,255,255,0.1)",

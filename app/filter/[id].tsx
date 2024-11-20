@@ -19,19 +19,18 @@ export default function FilterDetailScreen() {
   }
 
   return (
-    <ScrollView style={styles.container}>
-      <Image source={{ uri: item.imageUrl }} style={styles.image} resizeMode="cover" />
-      <View style={styles.contentContainer}>
+    <View style={styles.container}>
+      <Image source={item.image} style={styles.image} resizeMode="cover" />
+      <ScrollView style={styles.textContainer}>
         <Text style={styles.title}>{item.name}</Text>
         <Text style={styles.category}>Kategori: {item.category}</Text>
         <Text style={styles.origin}>Asal: {item.origin}</Text>
         <Text style={styles.description}>{item.description}</Text>
-      </View>
-
+      </ScrollView>
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
         <Text style={styles.backButtonText}>Kembali</Text>
       </TouchableOpacity>
-    </ScrollView>
+    </View>
   );
 }
 
@@ -43,15 +42,19 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: 300,
+    borderRadius: 20,
   },
-  contentContainer: {
+  textContainer: {
+    flex: 1,
     padding: 20,
+    marginBottom: 80,
   },
   title: {
     color: "white",
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 10,
+    marginTop: 15,
   },
   category: {
     color: "white",
@@ -67,13 +70,17 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 14,
     lineHeight: 22,
+    marginBottom: 10,
   },
   backButton: {
     backgroundColor: "rgba(255,255,255,0.2)",
     padding: 15,
-    margin: 20,
-    borderRadius: 10,
+    borderRadius: 30,
     alignItems: "center",
+    position: "absolute",
+    bottom: 80,
+    left: 20,
+    right: 20,
   },
   backButtonText: {
     color: "white",
@@ -81,3 +88,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+ 

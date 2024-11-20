@@ -1,35 +1,217 @@
+import { ImageSourcePropType } from "react-native";
+
 export interface FilterItem {
   id: string;
   name: string;
-  category: 'Tari' | 'Makanan' | 'Baju Adat' | 'Rumah Adat' | 'Bahasa Daerah';
+  category: "Tari" | "Makanan" | "Baju Adat" | "Rumah Adat" | "Bahasa Daerah";
   origin: string;
   description: string;
-  imageUrl: string;
+  image: ImageSourcePropType;
 }
-
 export const filterData: FilterItem[] = [
   {
-    id: 't1',
-    name: 'Tari Pendet',
-    category: 'Tari',
-    origin: 'Bali',
-    description: 'Tari selamat datang dari Bali Wow',
-    imageUrl: 'https://awsimages.detik.net.id/community/media/visual/2022/09/26/tari-pendet-yang-berasal-dari-bali_169.jpeg?w=1200'
+    id: "tari-1",
+    name: "Tari Pendet",
+    category: "Tari",
+    origin: "Bali",
+    description:
+      "Tari Pendet adalah tarian tradisional yang berasal dari Pulau Bali dan sering dianggap sebagai salah satu simbol budaya Bali yang kaya dan spiritual.",
+    image: require("../assets/tari/pendet.jpg"),
   },
   {
-    id: 't2',
-    name: 'Tari Saman',
-    category: 'Tari',
-    origin: 'Aceh',
-    description: 'Tari tradisional suku Gayo',
-    imageUrl: 'https://example.com/saman.jpg'
+    id: "tari-2",
+    name: "Tari Saman",
+    category: "Tari",
+    origin: "Aceh",
+    description:
+      'Tari Saman, yang berasal dari daerah Gayo, Aceh, adalah salah satu tarian tradisional paling terkenal di Indonesia. Tarian ini sering disebut sebagai "tari seribu tangan" karena gerakannya yang cepat dan sinkron, dilakukan oleh kelompok penari yang duduk berbaris.',
+    image: require("../assets/tari/saman.jpg"),
   },
   {
-    id: 'm1',
-    name: 'Nasi Goreng',
-    category: 'Makanan',
-    origin: 'Indonesia',
-    description: 'Hidangan nasi yang digoreng dengan bumbu',
-    imageUrl: 'https://example.com/nasigoreng.jpg'
+    id: "tari-3",
+    name: "Tari Kecak",
+    category: "Tari",
+    origin: "Bali",
+    description:
+      'Tari Kecak adalah salah satu tarian tradisional Bali yang sangat unik karena tidak menggunakan alat musik sebagai pengiring. Sebagai gantinya, tarian ini diiringi oleh suara "cak" yang dihasilkan oleh sekelompok pria yang duduk melingkar. Tari Kecak terinspirasi dari cerita epik Ramayana, yang menceritakan perjuangan Rama dalam menyelamatkan istrinya, Sita, dari Rahwana.',
+    image: require("../assets/tari/kecak.jpg"),
+  },
+  {
+    id: "tari-4",
+    name: "Tari Jaipong",
+    category: "Tari",
+    origin: "Jawa Barat",
+    description:
+      "Tari Jaipong adalah salah satu tarian tradisional dari Jawa Barat yang memadukan elemen seni bela diri, musik tradisional, dan gerakan tari yang dinamis. Tarian ini diciptakan pada tahun 1970-an oleh Gugum Gumbira sebagai cara untuk melestarikan seni tradisional Sunda. Tari Jaipong menonjolkan keindahan gerakan tubuh penari yang enerjik, sering kali diiringi oleh suara kendang yang menjadi pusat irama.",
+    image: require("../assets/tari/jaipong.jpg"),
+  },
+  {
+    id: "tari-5",
+    name: "Tari Reog",
+    category: "Tari",
+    origin: "Ponorogo",
+    description:
+      'Tari Reog adalah tarian khas dari Ponorogo, Jawa Timur, yang dikenal dengan topeng besar berbentuk kepala singa, sering disebut "Singa Barong", dihiasi bulu merak yang indah. Tarian ini melibatkan perpaduan antara seni tari, musik tradisional, dan drama yang menceritakan kisah legenda lokal. Pertunjukan Tari Reog biasanya diiringi oleh gamelan dengan irama yang menggugah semangat.',
+    image: require("../assets/tari/reog.jpg"),
+  },
+  {
+    id: "makanan-1",
+    name: "Papeda",
+    category: "Makanan",
+    origin: "Papua",
+    description: "Papeda adalah makanan khas Papua yang terbuat dari sagu yang diolah menjadi bubur kental. Papeda sering disajikan dengan ikan kuah kunir atau ikan bakar.",
+    image: require("../assets/makanan/papeda.png"),
+  },
+  {
+    id: "makanan-2",
+    name: "Tinutuan",
+    category: "Makanan",
+    origin: "Manado",
+    description: "Tinutuan, juga dikenal sebagai bubur Manado, adalah bubur khas yang terbuat dari jagung, sayur-sayuran, dan rempah-rempah, biasanya disajikan dengan ikan asin atau sambal.",
+    image: require("../assets/makanan/tinutuan.png"),
+  },
+  {
+    id: "makanan-3",
+    name: "Nasi Liwet",
+    category: "Makanan",
+    origin: "Solo",
+    description: "Nasi Liwet adalah nasi yang dimasak dengan santan, daun salam, dan rempah-rempah, lalu disajikan dengan lauk seperti ayam, telur, dan sambal.",
+    image: require("../assets/makanan/liwet.jpg"),
+  },
+  {
+    id: "makanan-4",
+    name: "Coto Makassar",
+    category: "Makanan",
+    origin: "Makassar",
+    description: "Coto Makassar adalah sup daging khas Makassar yang kaya akan rempah dan santan, dengan daging sapi, jeroan, dan biasanya disajikan dengan ketupat atau buras.",
+    image: require("../assets/makanan/coto.jpg"),
+  },
+  {
+    id: "makanan-5",
+    name: "Ayam Betutu",
+    category: "Makanan",
+    origin: "Bali",
+    description: "Ayam Betutu adalah ayam yang dimasak dengan bumbu rempah khas Bali, dibungkus daun pisang dan dipanggang lama hingga empuk dan kaya rasa.",
+    image: require("../assets/makanan/ayam.jpg"),
+  },
+  {
+    id: "baju-1",
+    name: "Baju Kurung",
+    category: "Baju Adat",
+    origin: "Aceh",
+    description: "Baju tradisional Aceh dengan desain anggun dan motif khas Aceh yang mencerminkan keindahan budaya setempat.",
+    image: require("../assets/baju/aceh.png"),
+  },
+  {
+    id: "baju-2",
+    name: "Ulos",
+    category: "Baju Adat",
+    origin: "Sumatera Utara",
+    description: "Kain tenun tradisional Batak dengan pola unik yang melambangkan kehangatan dan keberkahan.",
+    image: require("../assets/baju/ulos.png"),
+  },
+  {
+    id: "baju-3",
+    name: "Baju Kurung Basiba",
+    category: "Baju Adat",
+    origin: "Sumatera Barat",
+    description: "Baju tradisional dengan potongan panjang dan motif khas Minangkabau, biasanya digunakan untuk acara adat.",
+    image: require("../assets/baju/basiba.png"),
+  },
+  {
+    id: "baju-4",
+    name: "Baju Kurung Tanggung",
+    category: "Baju Adat",
+    origin: "Jambi",
+    description: "Pakaian adat Jambi dengan potongan lebih pendek dan motif khas Jambi yang penuh makna.",
+    image: require("../assets/baju/tanggung.png"),
+  },
+  {
+    id: "baju-5",
+    name: "Aesan Gede",
+    category: "Baju Adat",
+    origin: "Sumatera Selatan",
+    description: "Baju adat Palembang dengan warna cerah dan hiasan emas yang mencerminkan kemewahan.",
+    image: require("../assets/baju/aesan.png"),
+  },
+  {
+    id: "rumah-1",
+    name: "Rumoh Aceh",
+    category: "Rumah Adat",
+    origin: "Aceh",
+    description: "Rumah panggung khas Aceh yang terbuat dari kayu dengan atap yang curam dan ornamen ukiran tradisional.",
+    image: require("../assets/rumah/rumoh.jpg"),
+  },
+  {
+    id: "rumah-2",
+    name: "Bolon",
+    category: "Rumah Adat",
+    origin: "Sumatera Utara",
+    description: "Rumah adat suku Batak dengan atap tinggi melengkung dan ornamen ukiran geometris yang melambangkan kebesaran.",
+    image: require("../assets/rumah/bolon.jpg"),
+  },
+  {
+    id: "rumah-3",
+    name: "Rumah Gadang",
+    category: "Rumah Adat",
+    origin: "Sumatera Barat",
+    description: "Rumah tradisional Minangkabau dengan atap melengkung seperti tanduk kerbau, sering digunakan untuk upacara adat.",
+    image: require("../assets/rumah/gadang.jpg"),
+  },
+  {
+    id: "rumah-4",
+    name: "Selaso Jatuh Kembar",
+    category: "Rumah Adat",
+    origin: "Riau",
+    description: "Rumah adat Melayu dengan desain panggung dan tiang yang tinggi, sering digunakan sebagai balai musyawarah.",
+    image: require("../assets/rumah/selaso.jpg"),
+  },
+  {
+    id: "rumah-5",
+    name: "Rumah Panggung",
+    category: "Rumah Adat",
+    origin: "Jambi",
+    description: "Rumah adat Jambi dengan desain sederhana, terbuat dari kayu, dan biasanya berada di tepi sungai.",
+    image: require("../assets/rumah/panggung.jpg"),
+  },
+  {
+    id: "bahasa-1",
+    name: "Jawa",
+    category: "Bahasa Daerah",
+    origin: "Pulau Jawa",
+    description: "Bahasa yang digunakan di Pulau Jawa.",
+    image: require("../assets/bahasa/jawa.jpg"),
+  },
+  {
+    id: "bahasa-2",
+    name: "Sunda",
+    category: "Bahasa Daerah",
+    origin: "Jawa Barat",
+    description: "Bahasa yang digunakan oleh masyarakat suku Sunda.",
+    image: require("../assets/bahasa/sunda.jpg"),
+  },
+  {
+    id: "bahasa-3",
+    name: "Batak",
+    category: "Bahasa Daerah",
+    origin: "Sumatera Utara",
+    description: "Bahasa yang digunakan oleh suku Batak.",
+    image: require("../assets/bahasa/batak.jpg"),
+  },
+  {
+    id: "bahasa-4",
+    name: "Bugis",
+    category: "Bahasa Daerah",
+    origin: "Sulawesi Selatan",
+    description: "Bahasa yang digunakan oleh suku Bugis.",
+    image: require("../assets/bahasa/bugis.jpg"),
+  },
+  {
+    id: "bahasa-5",
+    name: "Minang",
+    category: "Bahasa Daerah",
+    origin: "Sumatera Barat",
+    description: "Bahasa yang digunakan oleh suku Minangkabau.",
+    image: require("../assets/bahasa/minang.jpg"),
   },
 ];

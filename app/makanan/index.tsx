@@ -3,12 +3,12 @@ import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from "react
 import { useRouter } from "expo-router";
 import { filterData, FilterItem } from "../../data/filterData";
 
-export default function TariListScreen() {
+export default function MakananListScreen() {
   const router = useRouter();
-  const tariData = filterData.filter((item) => item.category === "Tari");
+  const makananData = filterData.filter((item) => item.category === "Makanan");
 
-  const renderTariItem = ({ item }: { item: FilterItem }) => (
-    <TouchableOpacity onPress={() => router.push(`/tari/${item.id}`)}>
+  const renderMakananItem = ({ item }: { item: FilterItem }) => (
+    <TouchableOpacity onPress={() => router.push(`/makanan/${item.id}`)}>
       <View style={styles.itemContainer}>
         <Image source={item.image} style={styles.image} />
         <View style={styles.textContainer}>
@@ -21,8 +21,8 @@ export default function TariListScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tari Nusantara</Text>
-      <FlatList data={tariData} renderItem={renderTariItem} keyExtractor={(item) => item.id} contentContainerStyle={styles.listContainer} />
+      <Text style={styles.title}>Makanan Nusantara</Text>
+      <FlatList data={makananData} renderItem={renderMakananItem} keyExtractor={(item) => item.id} contentContainerStyle={styles.listContainer} />
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
         <Text style={styles.backButtonText}>Kembali</Text>
       </TouchableOpacity>
